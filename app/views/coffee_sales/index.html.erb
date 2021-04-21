@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Coffee Sales</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Origin</th>
+      <th>Blend</th>
+      <th>Price</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coffee_sales.each do |coffee_sale| %>
+      <tr>
+        <td><%= coffee_sale.origin %></td>
+        <td><%= coffee_sale.blend %></td>
+        <td><%= coffee_sale.price %></td>
+        <td><%= coffee_sale.date %></td>
+        <td><%= link_to 'Show', coffee_sale %></td>
+        <td><%= link_to 'Edit', edit_coffee_sale_path(coffee_sale) %></td>
+        <td><%= link_to 'Destroy', coffee_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coffee Sale', new_coffee_sale_path %>

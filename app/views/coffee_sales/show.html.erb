@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @coffee_sale.origin %>
+</p>
+
+<p>
+  <strong>Blend:</strong>
+  <%= @coffee_sale.blend %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @coffee_sale.price %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @coffee_sale.date %>
+</p>
+
+<%= link_to 'Edit', edit_coffee_sale_path(@coffee_sale) %> |
+<%= link_to 'Back', coffee_sales_path %>

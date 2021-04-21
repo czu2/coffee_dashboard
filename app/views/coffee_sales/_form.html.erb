@@ -1,0 +1,37 @@
+<%= form_with(model: coffee_sale, local: true) do |form| %>
+  <% if coffee_sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(coffee_sale.errors.count, "error") %> prohibited this coffee_sale from being saved:</h2>
+
+      <ul>
+      <% coffee_sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :origin %>
+    <%= form.text_field :origin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blend %>
+    <%= form.text_field :blend %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
