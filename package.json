@@ -1,5 +1,7 @@
 {
   "name": "coffee_dashboard",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
 }

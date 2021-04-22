@@ -60,3 +60,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "faker", "~> 2.17"
+
+gem "groupdate", "~> 5.2"
+
+gem "chartkick", "~> 3.4"
+
+gem "highcharts-rails"

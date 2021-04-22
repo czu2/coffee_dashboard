@@ -4,6 +4,58 @@ class CoffeeSalesController < ApplicationController
   # GET /coffee_sales or /coffee_sales.json
   def index
     @coffee_sales = CoffeeSale.all
+
+    # Sales
+    @sales_last_twelve_months = CoffeeSale.find_by_sql("
+        SELECT 
+          EXTRACT(month from date) as mes, sum(price) as ventas
+        FROM
+          coffee_sales
+        WHERE 
+          date BETWEEN '2020-04-01' and '#{Time.now}' 
+        GROUP BY 
+          mes
+        ORDER BY 
+          mes
+      ")
+    
+    @sales_quantity_last_twelve_months = CoffeeSale.find_by_sql("
+        SELECT 
+          EXTRACT(month from date) as mes, count(date) as ventas
+        FROM
+          coffee_sales
+        WHERE 
+          date BETWEEN '2020-04-01' and '#{Time.now}'
+        GROUP BY 
+          mes
+        ORDER BY 
+          mes
+      ")
+
+    @sales_quantity_last_twelve_months = CoffeeSale.find_by_sql("
+        SELECT 
+          EXTRACT(month from date) as mes, avg(price) as ventas from coffee_sales
+        WHERE 
+          date BETWEEN '2020-04-01' and '#{Time.now}'
+        GROUP BY 
+          mes
+        ORDER BY 
+          mes
+      ")
+
+      
+    # Origin
+    @origin_last_month = CoffeeSale.last_month
+    @origin_last_three_months = CoffeeSale.last_three_months
+    @origin_last_six_months = CoffeeSale.last_six_months
+    @origin_last_twelve_months = CoffeeSale.last_twelve_months
+
+    # Blend
+    @blend_last_month = CoffeeSale.last_month
+    @blend_last_three_months = CoffeeSale.last_three_months
+    @blend_last_six_months = CoffeeSale.last_six_months
+    @blend_last_twelve_months = CoffeeSale.last_twelve_months
+
   end
 
   # GET /coffee_sales/1 or /coffee_sales/1.json
